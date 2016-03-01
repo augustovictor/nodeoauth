@@ -5,7 +5,7 @@ var router = express.Router();
 router.route('/google/callback')
     .get(passport.authenticate('google', {
         successRedirect: '/users/',
-        failureRedirect: '/error'
+        failureRedirect: '/error/'
     }));
 
 router.route('/google')
@@ -14,6 +14,6 @@ router.route('/google')
             'https://www.googleapis.com/auth/userinfo.profile',
             'https://www.googleapis.com/auth/userinfo.email'
         ]
-    }));
+    }))
 
 module.exports = router;

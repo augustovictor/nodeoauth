@@ -3,8 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title> <%= title %> </title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
   </head>
   <body>
-    <%= title %>
+
+      <div>
+          <%= title %>
+          <ul>
+              <li>
+                  <a href="/auth/google" class="google-plus">
+                      <i class="fa fa-google-plus"></i>
+                  </a>
+              </li>
+          </ul>
+
+    </div>
   </body>
 </html>
