@@ -7,8 +7,10 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 
+// Routes impl imports
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var auth = require('./routes/auth');
 
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 passport.use(GoogleStrategy(
@@ -55,6 +57,7 @@ passport.deserializeUser(function(user, done) {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
