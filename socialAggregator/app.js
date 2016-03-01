@@ -10,6 +10,16 @@ var session = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+passport.use(GoogleStrategy({
+    clientId: '',
+    clientSecret: '',
+    callbackURL: '', // Where google will send user back to when auth is done
+    function(req, accessToken, refreshToken, profile, done) { // When google sends something to callbackURL
+        done(null, profile);
+    }
+}));
+
 var app = express();
 
 // view engine setup
