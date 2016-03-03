@@ -9,7 +9,16 @@ module.exports = function() {
                 callbackURL: 'http://localhost:3000/auth/google/callback' // Where google will send user back to when auth is done
             },
             function(req, accessToken, refreshToken, profile, done) { // When google sends something to callbackURL
-                done(null, profile);
+                var user = {};
+                user.email = profile.emails[0].value;
+                user.image = profile._json.image.url;
+                user.displayName = profile.displayName;
+
+                user.google = {};
+                user.google.id = profile.id;
+                user.google.token = accessToken;
+
+                done(null, user);
             }
         )
     );
