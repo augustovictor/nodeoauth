@@ -16,5 +16,6 @@ module.exports = function(app) {
     });
 
     require('./strategies/google.strategy')(); // It returns a function so it must be executed '()'
+    require('./strategies/twitter.strategy')();
 
 }
