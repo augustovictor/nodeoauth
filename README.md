@@ -6,3 +6,4 @@
 - Passport-google-oAuth: Google (OAuth) authentication strategies for Passport
 - Bower: The browser package manager
 - Passport-twitter: Twitter authentication strategy for Passport
+- Passport-facebook: Facebook authentication strategy for Passport
