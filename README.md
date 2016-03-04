@@ -7,3 +7,4 @@
 - Bower: The browser package manager
 - Passport-twitter: Twitter authentication strategy for Passport
 - Passport-facebook: Facebook authentication strategy for Passport
+- Mongoose:  MongoDB obj. modeling tool designed to work in an async env.

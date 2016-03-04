@@ -1,5 +1,6 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var User = require('../../models/userModel');
 
 module.exports = function() {
     passport.use(new FacebookStrategy(
@@ -11,16 +12,30 @@ module.exports = function() {
             profileFields: ['id', 'displayName', 'photos', 'email']
         },
         function(req, accessToken, refreshToken, profile, done) {
-            var user = {};
 
-            user.email = profile.emails[0].value;
-            user.displayName = profile.displayName;
+            var query = { 'facebook.id': profile.id };
 
-            user.facebook = {};
-            user.facebook.id = profile.id;
-            user.facebook.token = accessToken;
+            User.findOne(query, function(error, user) {
+                if(user) {
+                    console.log('found - facebook user');
+                    done(null, user);
+                }
+                else {
+                    var user = new User;
+                    console.log('not found - facebook user');
+                    var user = new User();
+                    user.email = profile.emails[0].value;
+                    user.displayName = profile.displayName;
 
-            done(null, user);
+                    user.facebook = {};
+                    user.facebook.id = profile.id;
+                    user.facebook.token = accessToken;
+
+                    user.save();
+                    done(null, user);
+                }
+            });
+
         }
     ));
 }

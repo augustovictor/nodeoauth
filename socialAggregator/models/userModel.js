@@ -10,4 +10,4 @@ var UserSchema = Schema({
     google:      { type: Object },
 });
 
-modules.export = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
