@@ -4,9 +4,44 @@
         <meta charset="utf-8">
         <title></title>
 
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/stylesheets/style.css">
+
+        <script type="text/javascript" src="/lib/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+
     </head>
     <body>
-        <image src="<%= user.picture %>"></image>
-        <%= user.name %>
+
+        <!-- Users info -->
+        <div>
+            <image src="<%= user.picture %>"></image>
+            <%= user.name %>
+        </div>
+
+        <!-- Social container -->
+        <ul class="social list-inline">
+            <li>
+                <a href="/auth/google" class="<% if (user.google) {%>google-plus<%}%>">
+                    <i class="fa fa-google-plus"></i>
+                    Login with Google+
+                </a>
+            </li>
+
+            <li>
+                <a href="/auth/twitter" class="<% if (user.twitter) {%>twitter<%}%>">
+                    <i class="fa fa-twitter"></i>
+                    Login with twitter
+                </a>
+            </li>
+
+            <li>
+                <a href="/auth/facebook" class="<% if (user.facebook) {%>facebook<%}%>">
+                    <i class="fa fa-facebook"></i>
+                    Login with Facebook
+                </a>
+            </li>
+        </ul>
     </body>
 </html>

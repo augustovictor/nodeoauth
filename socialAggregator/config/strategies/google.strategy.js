@@ -11,15 +11,14 @@ module.exports = function() {
             },
             function(req, accessToken, refreshToken, profile, done) { // When google sends something to callbackURL
 
-
                 var query = { 'google.id': profile.id };
+
                 User.findOne(query, function (error, user) {
                     if (user) {
                         console.log('found');
                         done(null, user);
                     }
                     else {
-                        var user = new User;
                         console.log('not found');
                         var user = new User;
 

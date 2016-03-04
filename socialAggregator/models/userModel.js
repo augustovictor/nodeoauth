@@ -7,7 +7,7 @@ var UserSchema = Schema({
     email:       { type: String },
     facebook:    { type: Object },
     twitter:     { type: Object },
-    google:      { type: Object },
+    google:      { type: Object }
 });
 
 module.exports = mongoose.model('User', UserSchema);

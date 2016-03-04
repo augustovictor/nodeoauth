@@ -12,29 +12,52 @@ module.exports = function() {
             profileFields: ['id', 'displayName', 'photos', 'email']
         },
         function(req, accessToken, refreshToken, profile, done) {
+            if (req.user) {
+                var query = {};
 
-            var query = { 'facebook.id': profile.id };
-
-            User.findOne(query, function(error, user) {
-                if(user) {
-                    console.log('found - facebook user');
-                    done(null, user);
+                if (req.user.google) {
+                    console.log('google');
+                    var query = { 'google.id': req.user.google.id };
                 }
-                else {
-                    var user = new User;
-                    console.log('not found - facebook user');
-                    var user = new User();
-                    user.email = profile.emails[0].value;
-                    user.displayName = profile.displayName;
+                else if (req.user.twitter) {
+                    console.log('twitter');
+                    var query = { 'twitter.id': req.user.twitter.id };
+                }
 
+                User.findOne(query, function(error, user) {
                     user.facebook = {};
                     user.facebook.id = profile.id;
                     user.facebook.token = accessToken;
 
                     user.save();
                     done(null, user);
-                }
-            });
+                });
+
+            }
+
+            else {
+                var query = { 'facebook.id': profile.id };
+
+                User.findOne(query, function(error, user) {
+                    if(user) {
+                        console.log('found - facebook user');
+                        done(null, user);
+                    }
+                    else {
+                        var user = new User;
+                        console.log('not found - facebook user');
+                        user.email = profile.emails[0].value;
+                        user.displayName = profile.displayName;
+
+                        user.facebook = {};
+                        user.facebook.id = profile.id;
+                        user.facebook.token = accessToken;
+
+                        user.save();
+                        done(null, user);
+                    }
+                });
+            }
 
         }
     ));
