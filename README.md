@@ -8,3 +8,4 @@
 - Passport-twitter: Twitter authentication strategy for Passport
 - Passport-facebook: Facebook authentication strategy for Passport
 - Mongoose:  MongoDB obj. modeling tool designed to work in an async env.
+- Provides simplified client access and allows for construction of more complex apis and OAuth providers

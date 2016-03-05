@@ -35,8 +35,6 @@ router.route('/facebook/callback')
     }));
 
 router.route('/facebook')
-    .get(passport.authenticate('facebook', {
-        // scope: ['email']
-    }));
+    .get(passport.authenticate('facebook'));
 
 module.exports = router;

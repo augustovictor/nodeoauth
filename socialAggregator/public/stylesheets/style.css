@@ -8,13 +8,19 @@ a {
 }
 
 .google-plus {
-    background: red;
+    background: #d34836;
+    color: white;
+    padding: 30px;
 }
 
 .facebook {
-    background: darkblue;
+    background: #3b5998;
+    color: white;
+    padding: 30px;
 }
 
 .twitter {
-    background: lightblue;
+    background: #0084b4;
+    color: white;
+    padding: 30px;
 }

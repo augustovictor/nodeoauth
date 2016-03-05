@@ -16,9 +16,23 @@
 
         <!-- Users info -->
         <div>
-            <image src="<%= user.picture %>"></image>
-            <%= user.name %>
+            <p>
+                <%if(user.facebook) {%>
+                    <image src="<%= user.facebook.image %>"></image>
+                    <%}%>
+            </p>
+            <%= user.displayName %>
+            <%if (user.google){%>
+                <p>
+                    <b>
+                        <%= user.email %>
+                    </b>
+                </p>
+            <%}%>
         </div>
+
+        <br>
+        <br>
 
         <!-- Social container -->
         <ul class="social list-inline">
@@ -43,5 +57,9 @@
                 </a>
             </li>
         </ul>
+        <br>
+        <div>
+            Last tweet: <%= user.twitter.lastPost %>
+        </div>
     </body>
 </html>
